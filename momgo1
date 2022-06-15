@@ -1,0 +1,302 @@
+db.createCollection("students")
+
+
+db.students.insertMany([{_id:11,name:"Sari",phone:8907623661,mark:68,city:"wayanad",dept:"cs",yoc:2019},{_id:12,name:"Abilash",phone:8935263661,mark:87,city:"Idukki",dept:"elec",yoc:2019},{_id:13,name:"Unni",phone:8911113661,mark:91,city:"Thrissur",dept:"cs",yoc:2019},{_id:14,name:"Zack",phone:8907612345,mark:89,city:"Thrissur",dept:"cs",yoc:2019},{_id:15,name:"Binu",phone:9873618920,mark:55,city:"Kollam",dept:"elec",yoc:2019} ])
+
+ db.students.insertOne({_id:16,name:"Sujith",phone:9835170900,mark:75,city:"Kannur",dept:"elec",yoc:2019})
+ 
+ 
+ > db.students.find().pretty()
+ {
+	"_id" : 11,
+	"name" : "sari",
+	"phone" : 8907623661,
+	"mark" : 68,
+	"city" : "wayanad",
+	"dept" : "cs",
+	"yoc" : 2019
+}
+{
+	"_id" : 12,
+	"name" : "Abilash",
+	"phone" : 8935263661,
+	"mark" : 87,
+	"city" : "Idukki",
+	"dept" : "elec",
+	"yoc" : 2019
+}
+{
+	"_id" : 13,
+	"name" : "Unni",
+	"phone" : 8911113661,
+	"mark" : 91,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2019
+}
+{
+	"_id" : 14,
+	"name" : "Zack",
+	"phone" : 8907612345,
+	"mark" : 89,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2019
+}
+{
+	"_id" : 15,
+	"name" : "Binu",
+	"phone" : 9873618920,
+	"mark" : 55,
+	"city" : "Kollam",
+	"dept" : "elec",
+	"yoc" : 2019
+}
+{
+	"_id" : 16,
+	"name" : "sujith",
+	"phone" : 9835170900,
+	"mark" : 75,
+	"city" : "Kannur",
+	"dept" : "elec",
+	"yoc" : 2019
+}
+
+
+db.students.find({$and: [{city:{$eq:"Thrissur"}},{mark:{$gt:90}}]}).pretty()
+
+{
+	"_id" : 13,
+	"name" : "Unni",
+	"phone" : 8911113661,
+	"mark" : 91,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2019
+}
+
+ db.students.find({},{"_id" : 1,"name":1,"city":1,"yoc" :1})
+ 
+ 
+ 
+ { "_id" : 11, "name" : "sari", "city" : "wayanad", "yoc" : 2019 }
+{ "_id" : 12, "name" : "Abilash", "city" : "Idukki", "yoc" : 2019 }
+{ "_id" : 13, "name" : "Unni", "city" : "Thrissur", "yoc" : 2019 }
+{ "_id" : 14, "name" : "Zack", "city" : "Thrissur", "yoc" : 2019 }
+{ "_id" : 15, "name" : "Binu", "city" : "Kollam", "yoc" : 2019 }
+{ "_id" : 16, "name" : "sujith", "city" : "Kannur", "yoc" : 2019 }
+
+
+
+> db.students.updateOne({name:"Sujith"},{$set:{phone:9656778634}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.find({name:"Sujith"})
+{ "_id" : 16, "name" : "sujith", "phone" : 9656778634, "mark" : 75, "city" : "Kannur", "dept" : "elec", "yoc" : 2019 }
+
+
+
+> db.students.updateOne({_id:11},{$set:{yoc:2021}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.updateOne({_id:12},{$set:{yoc:2021}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.updateOne({_id:13},{$set:{yoc:2021}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.updateOne({_id:14},{$set:{yoc:2021}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.updateOne({_id:15},{$set:{yoc:2021}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.updateOne({_id:16},{$set:{yoc:2021}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.find().pretty()
+{
+	"_id" : 11,
+	"name" : "sari",
+	"phone" : 8907623661,
+	"mark" : 68,
+	"city" : "wayanad",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+{
+	"_id" : 12,
+	"name" : "Abilash",
+	"phone" : 8935263661,
+	"mark" : 87,
+	"city" : "Idukki",
+	"dept" : "elec",
+	"yoc" : 2021
+}
+{
+	"_id" : 13,
+	"name" : "Unni",
+	"phone" : 8911113661,
+	"mark" : 91,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+{
+	"_id" : 14,
+	"name" : "Zack",
+	"phone" : 8907612345,
+	"mark" : 89,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+{
+	"_id" : 15,
+	"name" : "Binu",
+	"phone" : 9873618920,
+	"mark" : 55,
+	"city" : "Kollam",
+	"dept" : "elec",
+	"yoc" : 2021
+}
+{
+	"_id" : 16,
+	"name" : "sujith",
+	"phone" : 9656778634,
+	"mark" : 75,
+	"city" : "Kannur",
+	"dept" : "elec",
+	"yoc" : 2021
+}
+
+
+
+> db.customer.deleteOne({name:"Abilash"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+> db.students.find().pretty()
+{
+	"_id" : 11,
+	"name" : "sari",
+	"phone" : 8907623661,
+	"mark" : 68,
+	"city" : "wayanad",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+{
+	"_id" : 13,
+	"name" : "Unni",
+	"phone" : 8911113661,
+	"mark" : 91,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+{
+	"_id" : 14,
+	"name" : "Zack",
+	"phone" : 8907612345,
+	"mark" : 89,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+{
+	"_id" : 15,
+	"name" : "Binu",
+	"phone" : 9873618920,
+	"mark" : 55,
+	"city" : "Kollam",
+	"dept" : "elec",
+	"yoc" : 2021
+}
+{
+	"_id" : 16,
+	"name" : "sujith",
+	"phone" : 9656778634,
+	"mark" : 75,
+	"city" : "Kannur",
+	"dept" : "elec",
+	"yoc" : 2021
+}
+> 
+
+db.students.find().sort({name:1}).pretty()
+{
+	"_id" : 15,
+	"name" : "Binu",
+	"phone" : 9873618920,
+	"mark" : 55,
+	"city" : "Kollam",
+	"dept" : "elec",
+	"yoc" : 2021
+}
+{
+	"_id" : 11,
+	"name" : "Sari",
+	"phone" : 8907623661,
+	"mark" : 68,
+	"city" : "wayanad",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+{
+	"_id" : 16,
+	"name" : "Sujith",
+	"phone" : 9656778634,
+	"mark" : 75,
+	"city" : "Kannur",
+	"dept" : "elec",
+	"yoc" : 2021
+}
+{
+	"_id" : 13,
+	"name" : "Unni",
+	"phone" : 8911113661,
+	"mark" : 91,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+{
+	"_id" : 14,
+	"name" : "Zack",
+	"phone" : 8907612345,
+	"mark" : 89,
+	"city" : "Thrissur",
+	"dept" : "cs",
+	"yoc" : 2021
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
